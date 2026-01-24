@@ -3,6 +3,6 @@ permalink: /about/
 title: "About"
 ---
 
-Tempor velit sint sunt ipsum tempor enim ad qui ullamco. Est dolore anim ad velit duis dolore minim sunt aliquip amet commodo labore. Ut eu pariatur aute ea aute excepteur laborum. Esse ea esse excepteur minim mollit qui cillum excepteur ex dolore magna. Labore deserunt fugiat incididunt incididunt sint ea. Consequat dolore aute laboris quis proident quis non et est consectetur ex eiusmod sit culpa.
+👾 Chan Yin Yuen, Dave received his PhD degree in the Department of Aeronautical and Aviation Engineering, at The Hong Kong Polytechnic University, HKSAR under the supervision of Prof. Prof. Kam Hung Ng. He obtained his B. Eng degree of engineering in mechanical engineering in the University of Hong Kong in 2015. His current research interests include system dynamics, nonlinear optimal control, trajectory optimization, and machine learning, with a special focus on their applications to autonomous aerial vehicles.
 
-Cupidatat ea do et in excepteur in. Ad nostrud ut est esse eu duis ea sunt eiusmod. Aliquip tempor veniam sint elit fugiat. Velit incididunt laboris amet incididunt labore dolore irure velit excepteur commodo deserunt laborum. Consectetur eu fugiat veniam veniam Lorem labore magna eiusmod. Ea occaecat reprehenderit pariatur consectetur minim labore ut aliquip.
+👾 If you find my work appealing or would like to [connect](mailto:yin-yuen.chan@connect.polyu.hk), please get in touch. I am always looking for new collaborations.
