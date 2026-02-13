@@ -4,11 +4,9 @@ date: 2026-02-13T15:34:30-04:00
 categories:
   - blog
 tags:
-  - Fast Inverser Square Root 
+  - Fast Inverse Square Root 
   - IEEE 754
 ---
-
-# Notes on Fast Inverse Square Root
 
 It is just my note on understanding the mysterious Fast Inverse Square Root algorithm. I try to keep it as simple and clean as possible. By the way, for the amazing background stories behind it please check other great websites.
 
@@ -32,41 +30,41 @@ float Q_rsqrt(float number) {
 }
 ```
 
-Understanding it requires some backgorund knowledge: Binary representation, IEEE754, some Logarithms, type conversion in `c`, bit shifting and Newton's method. 
+Understanding it requires some background knowledge: Binary representation, IEEE 754, some Logarithms, type conversion in `C`, bit shifting, and Newton's method.
 
-Before discussing the actual code I will IEEE 754 standard first.
+Before discussing the actual code I will discuss the IEEE 754 standard first.
 
 ****
 
-## \(0^\circ\) Binary Representation
+## Binary Representation
 
 An example should explain how it works:
 
-\[
-\begin{align*}
-1101.01_2 = & 1 \cdot 2^3 + 1 \cdot 2^2 + 0 \cdot 2^1 + 1 \cdot 2^0 + 0 \cdot 2^{-1} + 1 \cdot 2^{-2} \\
-=\; & 8 + 4 + 0 + 1 + 0 + 0.25 \\
-=\; & 13.25_{10}
-\end{align*}
-\]
+$$
+\begin{aligned}
+1101.01_2 &= 1 \cdot 2^3 + 1 \cdot 2^2 + 0 \cdot 2^1 + 1 \cdot 2^0 + 0 \cdot 2^{-1} + 1 \cdot 2^{-2} \\
+&= 8 + 4 + 0 + 1 + 0 + 0.25 \\
+&= 13.25_{10}
+\end{aligned}
+$$
 
- ****
+****
 
 ## Scientific Notation of Binary
 
 Scientific Notation also works on binary numbers. Examples:
-\(11000_2 \rightarrow 1100_2 \times 2^1 \rightarrow 110_2 \times 2^2 \rightarrow 11_2 \times 2^3 \rightarrow 1.1_2 \times 2^4\)
-You can verify it by writing number in binary representation and factoring out the "2"s
+
+$$11000_2 \rightarrow 1100_2 \times 2^1 \rightarrow 110_2 \times 2^2 \rightarrow 11_2 \times 2^3 \rightarrow 1.1_2 \times 2^4$$
+
+You can verify it by writing the number in binary representation and factoring out the "2"s.
 
 Similarly, for decimals:
 
-\(0.0101_2 \rightarrow 0.101_2 \times 2^{-1} \rightarrow 1.01_2 \times 2^{-2}\)
+$$0.0101_2 \rightarrow 0.101_2 \times 2^{-1} \rightarrow 1.01_2 \times 2^{-2}$$
 
-> **Note:** To convert \(1.1_2 \times 2^4\) back to base 10, we can turn both \(1.1_2\) and \(2^4\) back to base 10:
+> **Note:** To convert $$1.1_2 \times 2^4$$ back to base 10, we can turn both $$1.1_2$$ and $$2^4$$ back to base 10:
 > 
-> \(1.1_2 \times 2^4 = (1+0.5)_{10} \times 16_{10} = 24_{10}\)
-
-## 
+> $$1.1_2 \times 2^4 = (1+0.5)_{10} \times 16_{10} = 24_{10}$$
 
 ****
 
@@ -74,56 +72,70 @@ Similarly, for decimals:
 
 Check out the converter: [IEEE-754 Floating Point Converter](https://www.h-schmidt.net/FloatConverter/IEEE754.html)
 
-We focus on 32 bits version:
+We focus on the 32-bit version:
 
 **Structure:** `[ S ] [ E E E E E E E E ] [ M M M ... M ]`
 
-* **1 bit:** Sign (\(S\)) (\(0 = +ve, 1 = -ve\))
-* **8 bits:** Exponent (\(E\)) (Bias: 127)
-* **23 bits:** Mantissa (\(M\))
+* **1 bit:** Sign ($$S$$) ($$0 = +ve, 1 = -ve$$)
+* **8 bits:** Exponent ($$E$$) (Bias: 127)
+* **23 bits:** Mantissa ($$M$$)
 
 Formula:
-\[ N = (-1)^{Sign} \times (1.Mantissa)_{2} \times 2^{Exponent-127} \]
+$$
+N = (-1)^{Sign} \times (1.Mantissa)_{2} \times 2^{Exponent-127}
+$$
 
-**Example 1 (convert a floating point number \(1.75_{10}\)):**
-\[ 1.75 = 1.11_2 = 1.11 \times 2^0 \]
+**Example 1 (convert a floating point number $$1.75_{10}$$):**
 
-\(\text{+ve} \implies S=0\) 
+$$
+1.75 = 1.11_2 = 1.11 \times 2^0
+$$
 
-Exponent = 0 \(\implies E - 127 = 0 \Rightarrow E = 127\).
-Mantissa part \(.11\) implies bits `1100...0` for mantissa.
+Sign bit: $$\text{+ve} \implies S=0$$ 
+
+Exponent: Actual Exponent = 0 $$\implies E - 127 = 0 \Rightarrow E = 127$$.
+
+Mantissa: $$.11$$ implies bits `1100...0` for mantissa.
 
 Resulting bits: `0 01111111 1100...00`
 
-**Example 2 (convert a 32 bit binary)** :`
+**Example 2 (convert a 32 bit binary):**
 
-1     10000001 1010 0000 0000 0000 0000 000`
+```text
+1    10000001    1010 0000 0000 0000 0000 000
+S    E           M
+```
 
-`S`         `E`                         `M`
-
-Sign bit is **1**   \( \implies \text{-ve}\) 
+Sign bit is **1**   $$\implies \text{-ve}$$ 
 
 The exponent bits are `10000001`
 
-\(\implies\) To decimal: \(10000001_2 = 129_{10}\)
-
-\(\implies E = 129 - 127 = 2\) 
+$$\implies$$ To decimal: $$10000001_2 = 129_{10}$$
+$$\implies E = 129 - 127 = 2$$ 
 
 The stored mantissa bits are `101...`.
 
 Remember the *Hidden Bit*: The formula assumes a leading `1.` before these bits.
 
-\(\text{Value} = 1.M\)
+$$\text{Value} = 1.M$$
 
-\[1.101_{2} = 1 + 0.5 + 0.125 = 1.625 \]
+$$
+1.101_{2} = 1 + 0.5 + 0.125 = 1.625
+$$
 
 Plug everything into the formula:
 
-\[N = (-1)^S \times (1.M) \times 2^{E-127} \]
+$$
+N = (-1)^S \times (1.M) \times 2^{E-127}
+$$
 
-\[N = (-1)^1 \times (1.625) \times 2^2\]
+$$
+N = (-1)^1 \times (1.625) \times 2^2
+$$
 
-\[ N = -1 \times 1.625 \times 4 \]
+$$
+N = -1 \times 1.625 \times 4
+$$
 
 Resulting float: **-6.5**.
 
@@ -133,24 +145,24 @@ Resulting float: **-6.5**.
 
 ### Logarithm Approximation Derivation
 
-Now set \(E\) and \(M\) as value for exponent and mantissa
+Now set $$E$$ and $$M$$ as value for exponent and mantissa.
 
-1. The integer representation (\(I\)) of the floating point number is interpreted as:
-   \[ I = 2^{23} \cdot E + M \]
+1. The integer representation $$I$$ of the floating point number is interpreted as:
+   $$ I = 2^{23} \cdot E + M $$
    *(This is effectively shifting the exponent left by 23 bits and adding the mantissa)*
 
-2. The actual floating point number (\(x\)) is calculated by:
-   \[x = \left( 1 + \frac{M}{2^{23}} \right) \cdot 2^{E-127}\] 
+2. The actual floating point number $$x$$ is calculated by:
+   $$ x = \left( 1 + \frac{M}{2^{23}} \right) \cdot 2^{E-127} $$
 
-3. `(The essence part)` Take \(\log_2\) of both sides:
-   \[ \log_2(x) = \log_2\left(1 + \frac{M}{2^{23}}\right) + (E - 127) \]
+3. `(The essence part)` Take $$\log_2$$ of both sides:
+   $$ \log_2(x) = \log_2\left(1 + \frac{M}{2^{23}}\right) + (E - 127) $$
 
-4. `(The essence part)` **Approximation:** Using a linear approximation for the log curve \(\log_2(1+v) \approx v + \mu\) (where \(\mu \approx 0.0430\) is a correction constant):
-   \[ \log_2(x) \approx \frac{M}{2^{23}} + \mu + E - 127 \]
+4. `(The essence part)` **Approximation:** Using a linear approximation for the log curve $$\log_2(1+v) \approx v + \mu$$ (where $$\mu \approx 0.0430$$ is a correction constant):
+   $$ \log_2(x) \approx \frac{M}{2^{23}} + \mu + E - 127 $$
 
-5. Rearranging to relate back to the integer representation (\(I = M + 2^{23}E\)):
-   \[ \log_2(x) \approx \frac{1}{2^{23}} (M + 2^{23}E) + \mu - 127 \]
-   \[ \log_2(x) \approx \frac{1}{2^{23}} I + \mu - 127 \]
+5. Rearranging to relate back to the integer representation ($$I = M + 2^{23}E$$):
+   $$ \log_2(x) \approx \frac{1}{2^{23}} (M + 2^{23}E) + \mu - 127 $$
+   $$ \log_2(x) \approx \frac{1}{2^{23}} I + \mu - 127 $$
 
 ---
 
@@ -186,26 +198,26 @@ i = 0x5f3759df - (i >> 1);
 ```
 
 **Derivation:**
-We want to calculate \(\Gamma = \frac{1}{\sqrt{y}} = y^{-1/2}\).
+We want to calculate $$\Gamma = \frac{1}{\sqrt{y}} = y^{-1/2}$$.
 
 In log space:
-\[ \log_2(\Gamma) = \log_2(y^{-1/2}) = -\frac{1}{2}\log_2(y) \]
+$$ \log_2(\Gamma) = \log_2(y^{-1/2}) = -\frac{1}{2}\log_2(y) $$
 
 Using the log approximation:
-\[ \log_2(\Gamma) \approx \frac{1}{2^{23}} I_\Gamma + \mu - 127 \]
-\[ \log_2(y) \approx \frac{1}{2^{23}} I_y + \mu - 127 \]
+$$ \log_2(\Gamma) \approx \frac{1}{2^{23}} I_\Gamma + \mu - 127 $$
+$$ \log_2(y) \approx \frac{1}{2^{23}} I_y + \mu - 127 $$
 
 Substitute these into the log equation:
-\[ \frac{1}{2^{23}} I_\Gamma + \mu - 127 = -\frac{1}{2} \left[ \frac{1}{2^{23}} I_y + \mu - 127 \right] \]
+$$ \frac{1}{2^{23}} I_\Gamma + \mu - 127 = -\frac{1}{2} \left[ \frac{1}{2^{23}} I_y + \mu - 127 \right] $$
 
-**Solve for \(I_\Gamma\) (the integer representation of the result):**
-\[ \frac{1}{2^{23}} I_\Gamma = -\frac{3}{2}(\mu - 127) - \frac{1}{2} \left[ \frac{1}{2^{23}} I_y \right] \]
+**Solve for $$I_\Gamma$$ (the integer representation of the result):**
+$$ \frac{1}{2^{23}} I_\Gamma = -\frac{3}{2}(\mu - 127) - \frac{1}{2} \left[ \frac{1}{2^{23}} I_y \right] $$
 
-Multiply by \(2^{23}\):
-\[ I_\Gamma = \frac{3}{2} 2^{23} (127 - \mu) - \frac{1}{2} I_y \]
+Multiply by $$2^{23}$$:
+$$ I_\Gamma = \frac{3}{2} 2^{23} (127 - \mu) - \frac{1}{2} I_y $$
 
-1. The term \(\frac{3}{2} 2^{23} (127 - \mu)\) is a constant. With \(\mu \approx 0.043\), this calculates to **`0x5f3759df`**.
-2. The term \(-\frac{1}{2} I_y\) corresponds to the rightshift bitwise operation for dividing by 2 `-(i >> 1)`.
+1. The term $$\frac{3}{2} 2^{23} (127 - \mu)$$ is a constant. With $$\mu \approx 0.043$$, this calculates to **`0x5f3759df`**.
+2. The term $$-\frac{1}{2} I_y$$ corresponds to the rightshift bitwise operation for dividing by 2 `-(i >> 1)`.
 
 **Casting back:**
 
@@ -221,26 +233,26 @@ Float cast back to convert the integer bits back to a floating point number.
 
 ## Newton's Method
 
-We have an initial guess \(y_{approx}\) from previous line. We want to refine it.
-Target: \(y = \frac{1}{\sqrt{x}} \Rightarrow y^2 = \frac{1}{x} \Rightarrow \frac{1}{y^2} - x = 0\).
+We have an initial guess $$y_{approx}$$ from previous line. We want to refine it.
+Target: $$y = \frac{1}{\sqrt{x}} \Rightarrow y^2 = \frac{1}{x} \Rightarrow \frac{1}{y^2} - x = 0$$.
 
-With \(x\) being the original input, we define the root-finding function:
-\[ f(y) = \frac{1}{y^2} - x \]
+With $$x$$ being the original input, we define the root-finding function:
+$$ f(y) = \frac{1}{y^2} - x $$
 
-Then, now the job is to find \(y\) such that \(f(y) = 0\).
+Then, now the job is to find $$y$$ such that $$f(y) = 0$$.
 
 **Derivative:**
-\[ f'(y) = -2y^{-3} = \frac{-2}{y^3} \]
+$$ f'(y) = -2y^{-3} = \frac{-2}{y^3} $$
 
 **Newton-Raphson Formula:**
-\[ y_{n+1} = y_n - \frac{f(y_n)}{f'(y_n)} \]
+$$ y_{n+1} = y_n - \frac{f(y_n)}{f'(y_n)} $$
 
-Substitute \(f(y)\) and \(f'(y)\):
-\[ y_{n+1} = y_n - \frac{(\frac{1}{y_n^2} - x)}{(\frac{-2}{y_n^3})} \]
-\[ y_{n+1} = y_n - \left( \frac{1}{y_n^2} - x \right) \cdot \left( \frac{y_n^3}{-2} \right) \]
+Substitute $$f(y)$$ and $$f'(y)$$:
+$$ y_{n+1} = y_n - \frac{(\frac{1}{y_n^2} - x)}{(\frac{-2}{y_n^3})} $$
+$$ y_{n+1} = y_n - \left( \frac{1}{y_n^2} - x \right) \cdot \left( \frac{y_n^3}{-2} \right) $$
 
-\[ y_{n+1} = y_n + \frac{1}{2} y_n - \frac{x}{2} y_n^3 \]
-\[ y_{n+1} = y_n \left( \frac{3}{2} - \frac{x}{2} y_n^2 \right) \]
+$$ y_{n+1} = y_n + \frac{1}{2} y_n - \frac{x}{2} y_n^3 $$
+$$ y_{n+1} = y_n \left( \frac{3}{2} - \frac{x}{2} y_n^2 \right) $$
 
 **In Code:**
 
