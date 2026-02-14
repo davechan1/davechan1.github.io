@@ -1,6 +1,6 @@
 ---
 title: "Notes on Fast Inverse Square Root"
-date: 2026-02-13T15:34:30-04:00
+date: 2025-02-13T15:34:30-04:00
 categories:
   - blog
 tags:
