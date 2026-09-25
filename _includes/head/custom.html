@@ -12,3 +12,74 @@
   };
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<!-- Mermaid diagrams -->
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Kramdown renders ```mermaid fenced blocks as:
+    //   <div class="language-mermaid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...</code></pre></div></div>
+    // Convert each into a <pre class="mermaid"> node that mermaid can process.
+    var codeBlocks = document.querySelectorAll("code.language-mermaid");
+
+    codeBlocks.forEach(function (code) {
+      var wrapper = code.closest(".language-mermaid") || code.parentElement;
+      var graph = document.createElement("pre");
+      graph.className = "mermaid";
+      graph.textContent = code.innerText;
+      wrapper.replaceWith(graph);
+    });
+
+    mermaid.initialize({ startOnLoad: false, theme: "dark", securityLevel: "loose" });
+    mermaid.run();
+  });
+</script>
+
+<!-- Copy button for code blocks -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Minimal Mistakes wraps code in .highlighter-rouge or figure.highlight
+    var blocks = document.querySelectorAll(
+      ".page__content .highlighter-rouge, .page__content figure.highlight"
+    );
+
+    blocks.forEach(function (block) {
+      // Skip mermaid blocks - they get turned into diagrams, not copyable code.
+      if (block.querySelector("code.language-mermaid")) return;
+
+      var pre = block.querySelector("pre");
+      if (!pre) return;
+
+      var button = document.createElement("button");
+      button.className = "copy-code-button";
+      button.type = "button";
+      button.textContent = "Copy";
+
+      button.addEventListener("click", function () {
+        // Grab the code text (ignore line numbers / the button itself)
+        var codeEl = pre.querySelector("code") || pre;
+        var text = codeEl.innerText;
+
+        navigator.clipboard.writeText(text).then(
+          function () {
+            button.textContent = "Copied!";
+            setTimeout(function () {
+              button.textContent = "Copy";
+            }, 2000);
+          },
+          function () {
+            button.textContent = "Error";
+            setTimeout(function () {
+              button.textContent = "Copy";
+            }, 2000);
+          }
+        );
+      });
+
+      // The button is absolutely positioned relative to the block
+      block.style.position = "relative";
+      block.appendChild(button);
+    });
+  });
+</script>

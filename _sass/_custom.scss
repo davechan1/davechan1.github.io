@@ -1,0 +1,93 @@
+// ============================================================
+//  ADJUSTABLE FONT SIZE FOR POST CONTENT
+//  Change this value to make the text in posts bigger/smaller.
+//  e.g. 0.8rem (smaller) ... 1rem (bigger)
+// ============================================================
+$post-font-size: 0.95rem;
+
+// ============================================================
+//  ADJUSTABLE POST / PAGE WIDTH
+//  Theme default max container width is 1280px.
+//  Increase this to make posts wider (e.g. 1600px, 1920px, 100%).
+// ============================================================
+$content-max-width: 1600px;
+
+html {
+  font-size: 16px; /* Default is typically 16px */
+}
+
+body {
+  font-size: 1.4rem;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+p {
+  font-size: 0.9rem;
+}
+
+// ------------------------------------------------------------
+//  Apply the adjustable size to the body text of posts/pages.
+// ------------------------------------------------------------
+.page__content {
+  font-size: $post-font-size;
+
+  p,
+  li,
+  dl,
+  dt,
+  dd {
+    font-size: $post-font-size;
+  }
+}
+
+// ------------------------------------------------------------
+//  Widen the overall content container.
+//  #main is the wrapper the theme caps at $x-large (1280px).
+// ------------------------------------------------------------
+#main {
+  @media (min-width: 1280px) {
+    max-width: $content-max-width;
+  }
+}
+
+// ------------------------------------------------------------
+//  Copy button for code blocks
+// ------------------------------------------------------------
+.copy-code-button {
+  position: absolute;
+  top: 0.4em;
+  right: 0.4em;
+  z-index: 5;
+  padding: 0.25em 0.6em;
+  font-size: 0.75rem;
+  line-height: 1;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out, background 0.15s ease-in-out;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+
+// Reveal the button when hovering over the code block.
+.page__content .highlighter-rouge:hover .copy-code-button,
+.page__content figure.highlight:hover .copy-code-button,
+.copy-code-button:focus {
+  opacity: 1;
+}

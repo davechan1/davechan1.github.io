@@ -1,0 +1,7 @@
+---
+# Front matter (even empty) is REQUIRED so Jekyll compiles this SCSS file.
+---
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
+@import "minimal-mistakes";
+@import "custom"; // Add this line
