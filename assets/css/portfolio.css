@@ -7,3 +7,148 @@
 /* Four milestones on the homepage, with room for the full institution names. */
 .home .education{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media(max-width:900px){.home .education{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:24px}}
+
+/* Project images: larger, balanced tiles without cropping technical figures. */
+.timeline-group {
+  grid-template-columns: 175px minmax(0, 1fr);
+}
+.branches,
+.project {
+  min-width: 0;
+}
+.project-hero {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 30px 0 24px;
+}
+.project .image-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 240px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  background: #f0f2ec;
+}
+.project .image-button:hover {
+  background: #e7ece1;
+  border-color: #a8b8a0;
+}
+.project .image-button img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 340px;
+  object-fit: contain;
+}
+.project-hero-stacked {
+  grid-template-columns: minmax(0, 1fr);
+}
+.project-hero-stacked .image-button img {
+  max-height: none;
+}
+.project details {
+  margin-top: 24px;
+  border-top: 1px solid var(--line);
+  padding: 0;
+}
+.project summary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 58px;
+  padding: 15px 0;
+  list-style: none;
+}
+.project summary::-webkit-details-marker {
+  display: none;
+}
+.project summary::after {
+  content: '+';
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+}
+.project details[open] summary::after {
+  content: '−';
+}
+.gallery-count {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 11px;
+  white-space: nowrap;
+}
+.gallery {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0 0 24px;
+}
+.gallery figure {
+  min-width: 0;
+}
+.gallery figure:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+.gallery .image-button {
+  min-height: 210px;
+}
+.gallery .image-button img {
+  max-height: 280px;
+}
+.gallery figure:last-child:nth-child(odd) img {
+  max-height: 340px;
+}
+@media (max-width: 900px) {
+  .timeline-group {
+    grid-template-columns: 120px minmax(0, 1fr);
+  }
+  .project .image-button {
+    min-height: 190px;
+    padding: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .project-hero,
+  .gallery {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+  .project .image-button {
+    min-height: 0;
+    padding: 12px;
+  }
+  .project .image-button img {
+    max-height: 380px;
+  }
+  .project summary {
+    gap: 8px;
+    font-size: 12px;
+  }
+  .gallery-count {
+    font-size: 10px;
+  }
+}
+
+/* This PDF photo is stored sideways; restore its portrait display in both views. */
+.project .image-button:has(img[src$="p09-045.webp"]) {
+  min-height: 300px;
+}
+.project .image-button img[src$="p09-045.webp"] {
+  width: 270px;
+  max-width: none;
+  transform: rotate(90deg);
+}
+#image-viewer:has(img[src$="p09-045.webp"]) {
+  width: min(90vw, 440px);
+  height: 90svh;
+}
+#image-viewer img[src$="p09-045.webp"] {
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  width: 72svh;
+  max-width: none;
+  max-height: none;
+  transform: translate(-50%, -50%) rotate(90deg);
+}

@@ -21,7 +21,7 @@ Jekyll downloads the configured remote theme during builds, so network access is
 - `assets/js/portfolio.js`: deterministic illustrative cityscape and image viewer.
 - `assets/images/portfolio/manifest.json`: extracted image inventory with original PDF page numbers. Soft masks are composited into their associated images.
 
-Content was reconciled against `assets/pdf/Portfolio_Dave_v1.pdf`. The current Postdoctoral Fellow role, 2018 MSc, and earlier employment dates were updated from the owner’s corrections. The timeline includes every extracted image from the project pages, including small diagram components; cover and biography assets are also retained. The assembled wind-platform diagram preserves vector labels from the source page.
+Content was reconciled against `assets/pdf/Portfolio_Dave_v1.pdf`. The current Postdoctoral Fellow role, 2018 MSc, and earlier employment dates were updated from the owner’s corrections. The timeline uses the retained project images, with deleted low-resolution assets removed from both galleries and the image inventory. Featured images are not repeated in expanded galleries; cover and biography assets are also retained. The assembled wind-platform diagram preserves vector labels from the source page.
 
 ## Privacy
 
