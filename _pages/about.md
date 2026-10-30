@@ -1,8 +1,7 @@
 ---
+layout: portfolio
 permalink: /about/
-title: "About"
+title: About
 ---
-
-👾 I received the PhD degree in the Department of Aeronautical and Aviation Engineering, at The Hong Kong Polytechnic University, HKSAR under the supervision of Prof. Prof. Kam Hung Ng. I obtained his B. Eng degree of engineering in mechanical engineering in the University of Hong Kong in 2015. His current research interests include system dynamics, nonlinear optimal control, trajectory optimization, and machine learning, with a special focus on their applications to autonomous aerial vehicles.
-
-👾 If you find my work appealing or would like to [connect](mailto:yin-yuen.chan@connect.polyu.hk), please get in touch. I am always looking for new collaborations.
+<section class="page-heading content-width"><p class="eyebrow">ABOUT ME</p><h1>Dave Chan.<br><span style="color:var(--green)">Curiosity in motion.</span></h1></section>
+<section class="about-content content-width" style="padding-top:0"><p>My name is Chan Yin Yuen, Dave. I am a Postdoctoral Fellow in the Department of Computing at The Hong Kong Polytechnic University, Hong Kong SAR.</p><p>My research focuses on system dynamics, nonlinear optimal control, trajectory optimization, and machine learning, with an emphasis on methods and algorithms for autonomous aerial vehicles.</p><h2>Education</h2><div class="education"><div><span>2025</span><strong>PhD · Aeronautical and Aviation Engineering</strong><small>The Hong Kong Polytechnic University<br>Supervisor: Professor Kam Hung Ng</small></div><div><span>2018</span><strong>MSc · Mechanical Engineering</strong><small>The Hong Kong University of Science and Technology</small></div><div><span>2015</span><strong>B.Eng. · Mechanical Engineering</strong><small>The University of Hong Kong</small></div></div><h2>Research & engineering</h2><p>My work spans UAV trajectory planning, physics-informed modelling, wind estimation, and real-time wind and turbulence mapping. Earlier engineering projects include autonomous mobile robots at RV Automation Technology Company Limited (2019–2021) and a drainage-pipe repair robot at The Hong Kong University of Science and Technology (2018).</p><a class="text-link" href="{{ '/projects/' | relative_url }}">Explore the project timeline ↗</a><h2>Let’s connect</h2><p>I am always interested in new collaborations. If my work connects with yours, please get in touch.</p><a class="text-link" href="mailto:yin-yuen.chan@connect.polyu.hk">yin-yuen.chan@connect.polyu.hk ↗</a></section>

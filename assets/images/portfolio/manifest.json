@@ -1,0 +1,422 @@
+[
+  {
+    "page": 1,
+    "image": "p01-000.webp",
+    "width": 779,
+    "height": 508
+  },
+  {
+    "page": 1,
+    "image": "p01-001.webp",
+    "width": 747,
+    "height": 508
+  },
+  {
+    "page": 1,
+    "image": "p01-002.webp",
+    "width": 902,
+    "height": 470
+  },
+  {
+    "page": 1,
+    "image": "p01-003.webp",
+    "width": 508,
+    "height": 779
+  },
+  {
+    "page": 1,
+    "image": "p01-004.webp",
+    "width": 470,
+    "height": 539
+  },
+  {
+    "page": 1,
+    "image": "p01-005.webp",
+    "width": 964,
+    "height": 518
+  },
+  {
+    "page": 2,
+    "image": "p02-006.webp",
+    "width": 42,
+    "height": 35
+  },
+  {
+    "page": 2,
+    "image": "p02-008.webp",
+    "width": 518,
+    "height": 656
+  },
+  {
+    "page": 2,
+    "image": "p02-009.webp",
+    "width": 652,
+    "height": 456
+  },
+  {
+    "page": 3,
+    "image": "p03-010.webp",
+    "width": 1146,
+    "height": 352
+  },
+  {
+    "page": 4,
+    "image": "p04-012.webp",
+    "width": 466,
+    "height": 427
+  },
+  {
+    "page": 4,
+    "image": "p04-013.webp",
+    "width": 310,
+    "height": 252
+  },
+  {
+    "page": 4,
+    "image": "p04-014.webp",
+    "width": 310,
+    "height": 302
+  },
+  {
+    "page": 4,
+    "image": "p04-015.webp",
+    "width": 232,
+    "height": 187
+  },
+  {
+    "page": 4,
+    "image": "p04-017.webp",
+    "width": 512,
+    "height": 264
+  },
+  {
+    "page": 4,
+    "image": "p04-018.webp",
+    "width": 1170,
+    "height": 806
+  },
+  {
+    "page": 4,
+    "image": "p04-019.webp",
+    "width": 454,
+    "height": 335
+  },
+  {
+    "page": 4,
+    "image": "p04-020.webp",
+    "width": 360,
+    "height": 133
+  },
+  {
+    "page": 4,
+    "image": "p04-021.webp",
+    "width": 239,
+    "height": 39
+  },
+  {
+    "page": 4,
+    "image": "p04-022.webp",
+    "width": 237,
+    "height": 70
+  },
+  {
+    "page": 5,
+    "image": "p05-023.webp",
+    "width": 333,
+    "height": 339
+  },
+  {
+    "page": 5,
+    "image": "p05-024.webp",
+    "width": 514,
+    "height": 308
+  },
+  {
+    "page": 5,
+    "image": "p05-025.webp",
+    "width": 1170,
+    "height": 806
+  },
+  {
+    "page": 5,
+    "image": "p05-026.webp",
+    "width": 260,
+    "height": 217
+  },
+  {
+    "page": 5,
+    "image": "p05-027.webp",
+    "width": 295,
+    "height": 227
+  },
+  {
+    "page": 6,
+    "image": "p06-028.webp",
+    "width": 601,
+    "height": 259
+  },
+  {
+    "page": 6,
+    "image": "p06-029.webp",
+    "width": 524,
+    "height": 463
+  },
+  {
+    "page": 6,
+    "image": "p06-030.webp",
+    "width": 587,
+    "height": 228
+  },
+  {
+    "page": 7,
+    "image": "p07-031.webp",
+    "width": 1010,
+    "height": 349
+  },
+  {
+    "page": 7,
+    "image": "p07-032.webp",
+    "width": 806,
+    "height": 245
+  },
+  {
+    "page": 7,
+    "image": "p07-034.webp",
+    "width": 429,
+    "height": 319
+  },
+  {
+    "page": 7,
+    "image": "p07-036.webp",
+    "width": 395,
+    "height": 283
+  },
+  {
+    "page": 7,
+    "image": "p07-037.webp",
+    "width": 755,
+    "height": 630
+  },
+  {
+    "page": 7,
+    "image": "p07-038.webp",
+    "width": 510,
+    "height": 246
+  },
+  {
+    "page": 8,
+    "image": "p08-039.webp",
+    "width": 1146,
+    "height": 352
+  },
+  {
+    "page": 9,
+    "image": "p09-041.webp",
+    "width": 358,
+    "height": 234
+  },
+  {
+    "page": 9,
+    "image": "p09-042.webp",
+    "width": 596,
+    "height": 265
+  },
+  {
+    "page": 9,
+    "image": "p09-043.webp",
+    "width": 550,
+    "height": 366
+  },
+  {
+    "page": 9,
+    "image": "p09-044.webp",
+    "width": 1000,
+    "height": 566
+  },
+  {
+    "page": 9,
+    "image": "p09-045.webp",
+    "width": 942,
+    "height": 285
+  },
+  {
+    "page": 10,
+    "image": "p10-046.webp",
+    "width": 841,
+    "height": 519
+  },
+  {
+    "page": 10,
+    "image": "p10-047.webp",
+    "width": 1536,
+    "height": 1024
+  },
+  {
+    "page": 10,
+    "image": "p10-048.webp",
+    "width": 495,
+    "height": 308
+  },
+  {
+    "page": 11,
+    "image": "p11-049.webp",
+    "width": 1141,
+    "height": 593
+  },
+  {
+    "page": 11,
+    "image": "p11-051.webp",
+    "width": 50,
+    "height": 58
+  },
+  {
+    "page": 11,
+    "image": "p11-053.webp",
+    "width": 52,
+    "height": 40
+  },
+  {
+    "page": 11,
+    "image": "p11-055.webp",
+    "width": 67,
+    "height": 39
+  },
+  {
+    "page": 11,
+    "image": "p11-057.webp",
+    "width": 72,
+    "height": 54
+  },
+  {
+    "page": 11,
+    "image": "p11-059.webp",
+    "width": 83,
+    "height": 91
+  },
+  {
+    "page": 11,
+    "image": "p11-061.webp",
+    "width": 105,
+    "height": 63
+  },
+  {
+    "page": 11,
+    "image": "p11-063.webp",
+    "width": 56,
+    "height": 61
+  },
+  {
+    "page": 11,
+    "image": "p11-065.webp",
+    "width": 137,
+    "height": 112
+  },
+  {
+    "page": 11,
+    "image": "p11-066.webp",
+    "width": 47,
+    "height": 52
+  },
+  {
+    "page": 11,
+    "image": "p11-068.webp",
+    "width": 39,
+    "height": 43
+  },
+  {
+    "page": 11,
+    "image": "p11-070.webp",
+    "width": 41,
+    "height": 43
+  },
+  {
+    "page": 11,
+    "image": "p11-072.webp",
+    "width": 45,
+    "height": 52
+  },
+  {
+    "page": 11,
+    "image": "p11-074.webp",
+    "width": 149,
+    "height": 96
+  },
+  {
+    "page": 12,
+    "image": "p12-076.webp",
+    "width": 472,
+    "height": 832
+  },
+  {
+    "page": 12,
+    "image": "p12-077.webp",
+    "width": 637,
+    "height": 858
+  },
+  {
+    "page": 12,
+    "image": "p12-078.webp",
+    "width": 662,
+    "height": 724
+  },
+  {
+    "page": 12,
+    "image": "p12-079.webp",
+    "width": 456,
+    "height": 727
+  },
+  {
+    "page": 13,
+    "image": "p13-080.webp",
+    "width": 702,
+    "height": 577
+  },
+  {
+    "page": 13,
+    "image": "p13-081.webp",
+    "width": 910,
+    "height": 518
+  },
+  {
+    "page": 13,
+    "image": "p13-082.webp",
+    "width": 914,
+    "height": 429
+  },
+  {
+    "page": 13,
+    "image": "p13-083.webp",
+    "width": 244,
+    "height": 143
+  },
+  {
+    "page": 13,
+    "image": "p13-084.webp",
+    "width": 529,
+    "height": 368
+  },
+  {
+    "page": 14,
+    "image": "p14-085.webp",
+    "width": 451,
+    "height": 374
+  },
+  {
+    "page": 14,
+    "image": "p14-086.webp",
+    "width": 399,
+    "height": 774
+  },
+  {
+    "page": 14,
+    "image": "p14-087.webp",
+    "width": 838,
+    "height": 258
+  },
+  {
+    "page": 14,
+    "image": "p14-088.webp",
+    "width": 916,
+    "height": 599
+  }
+]
